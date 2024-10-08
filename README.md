@@ -35,34 +35,22 @@ React Native development environment set up (Xcode for iOS or Android Studio for
 Steps
 Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/your-username/menu-management-app.git
 Navigate to the project directory:
 
-bash
-Copy code
 cd menu-management-app
 Install dependencies:
 
-bash
-Copy code
 npm install
 or
 
-bash
-Copy code
 yarn install
 Start the app:
 
-bash
-Copy code
 npx react-native run-android   # For Android
 npx react-native run-ios       # For iOS
 Alternatively, if using Expo:
 
-bash
-Copy code
 npm start
 Usage
 Once the app is set up, you can start managing your menu with ease:

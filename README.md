@@ -35,7 +35,7 @@ React Native development environment set up (Xcode for iOS or Android Studio for
 Steps
 Clone the repository:
 
-git clone https://github.com/your-username/menu-management-app.git
+git clone (https://github.com/elriquedolf/ChefMenuApp_)
 Navigate to the project directory:
 
 cd menu-management-app

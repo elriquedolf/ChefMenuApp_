@@ -76,3 +76,9 @@ Provides a detailed view of a selected menu item, including the ID and price.
 
 Add Item Screen:
 Users can input new menu item details like name, description, course, and price.
+
+Reference list
+
+IIE 2024. Mobile App Scripting. Module Manuel. The Independent Institution of Education
+Open Ai. 2024. Chatgbt https://chatgpt.com
+

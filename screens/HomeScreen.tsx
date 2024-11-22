@@ -1,4 +1,3 @@
-// HomeScreen.tsx
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 
@@ -17,9 +16,7 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
   useEffect(() => {
     // Simulating data fetch
     const fetchData = async () => {
-      // Simulated delay
       await new Promise(resolve => setTimeout(resolve, 1000));
-      // Here, you can replace this with actual fetching logic
       const data: MenuItem[] = [
         { id: '1', name: 'Spaghetti', description: 'Delicious spaghetti', price: 85, course: 'Main' },
         { id: '2', name: 'Cheesecake', description: 'Creamy cheesecake', price: 50, course: 'Dessert' },
@@ -31,10 +28,21 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
     fetchData();
   }, []);
 
+  const calculateAveragePrice = (course: string) => {
+    const filteredItems = menuItems.filter(item => item.course === course);
+    if (filteredItems.length === 0) return 0;
+    const totalPrice = filteredItems.reduce((sum, item) => sum + item.price, 0);
+    return totalPrice / filteredItems.length;
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Menu Items</Text>
       <Text>Total Items: {menuItems.length}</Text>
+
+      <Text style={styles.averagePrice}>Average Price - Starters: R{calculateAveragePrice('Starter').toFixed(2)}</Text>
+      <Text style={styles.averagePrice}>Average Price - Main: R{calculateAveragePrice('Main').toFixed(2)}</Text>
+      <Text style={styles.averagePrice}>Average Price - Dessert: R{calculateAveragePrice('Dessert').toFixed(2)}</Text>
 
       {loading ? (
         <ActivityIndicator size="large" color="#00609e" />
@@ -61,6 +69,13 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
         onPress={() => navigation.navigate('Add Item', { setMenuItems })}
       >
         <Text style={styles.buttonText}>Add New Item</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Filter')}
+      >
+        <Text style={styles.buttonText}>Filter by Course</Text>
       </TouchableOpacity>
     </View>
   );
@@ -99,6 +114,11 @@ const styles = StyleSheet.create({
   itemPrice: {
     fontSize: 16,
     color: '#333',
+  },
+  averagePrice: {
+    fontSize: 16,
+    color: '#007bff',
+    marginTop: 8,
   },
   button: {
     backgroundColor: '#ff6347',
